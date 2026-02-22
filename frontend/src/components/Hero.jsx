@@ -14,7 +14,7 @@ export default function Hero() {
   // Fetch real waitlist count on mount
   useEffect(() => {
     axios
-      .get(`${import.meta.env.VITE_API_URL}/waitlist/count`)
+      .get(`${import.meta.env.VITE_API_URL}/count`)
       .then((res) => {
         if (res.data?.count != null) setWaitlistCount(res.data.count);
       })
@@ -41,7 +41,7 @@ export default function Hero() {
     setError('');
     try {
       const res = await axios.post(
-        `${import.meta.env.VITE_API_URL}/waitlist/signup`,
+        `${import.meta.env.VITE_API_URL}/signup`,
         { email }
       );
       setSuccess(true);
