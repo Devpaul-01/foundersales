@@ -27,13 +27,13 @@ const EmailIcon = () => (
     <path strokeLinecap="round" strokeLinejoin="round" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z" />
   </svg>
 );
-
 const socials = [
-  { href: 'https://x.com/foundersales', label: 'X', icon: <XIcon /> },
-  { href: 'https://reddit.com/r/foundersales', label: 'Reddit', icon: <RedditIcon /> },
-  { href: 'https://linkedin.com/company/foundersales', label: 'LinkedIn', icon: <LinkedInIcon /> },
+  { href: 'https://x.com/Dev Paul', label: 'X', icon: <XIcon /> },
+  { href: 'https://reddit.com/u/Dev-Paul0', label: 'Reddit', icon: <RedditIcon /> },
+  { href: 'https://linkedin.com/in/Dev Paul', label: 'LinkedIn', icon: <LinkedInIcon /> },
   { href: 'mailto:hellofoundersales@gmail.com', label: 'Email', icon: <EmailIcon /> },
 ];
+
 
 export default function Footer() {
   return (
