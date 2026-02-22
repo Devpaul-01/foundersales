@@ -13,7 +13,7 @@ const signupLimiter = rateLimit({
 
 // Simple admin auth middleware — checks for ADMIN_SECRET in request header
 function requireAdmin(req, res, next) {
-  const secret = req.headers['x-admin-secret'];
+  const secret = req.query.secret;
   if (!process.env.ADMIN_SECRET || secret !== process.env.ADMIN_SECRET) {
     return res.status(401).json({ error: true, message: 'Unauthorized' });
   }
@@ -42,7 +42,7 @@ router.get(
 // Manual email dispatch — call this from Postman/curl whenever you want to send emails
 // POST /api/waitlist/send-emails
 // Header: x-admin-secret: <your ADMIN_SECRET from .env>
-router.post(
+router.get(
   '/send-emails',
   requireAdmin,
   waitlistController.sendPendingEmails
