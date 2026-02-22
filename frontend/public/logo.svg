@@ -1,0 +1,21 @@
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+  <!-- Blue circular background -->
+  <circle cx="64" cy="64" r="64" fill="#2563eb"/>
+
+  <!-- White F symbol: C/E shape + bottom downward leg -->
+  <path d="
+    M 36 28
+    H 86 C 91 28 94 32 94 36
+    C 94 40 91 44 86 44
+    H 52 V 60
+    H 80 C 85 60 88 64 88 68
+    C 88 72 85 76 80 76
+    H 52 V 96
+    C 52 100 48 104 44 104
+    C 40 104 36 100 36 96
+    V 36
+    C 36 32 36 28 36 28
+    Z
+  " fill="white" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>
