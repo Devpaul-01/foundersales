@@ -1,118 +1,451 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>You're on the FounderSales waitlist</title>
   <style>
+    /* Reset */
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       padding: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      line-height: 1.6;
-      color: #111827;
-      background-color: #f9fafb;
+      background-color: #f1f5f9;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      color: #0f172a;
     }
-    .container {
-      max-width: 600px;
+    img { border: 0; display: block; }
+    a { text-decoration: none; }
+
+    /* Wrapper */
+    .email-wrapper {
+      width: 100%;
+      padding: 32px 16px 48px;
+    }
+
+    /* Card */
+    .card {
+      max-width: 580px;
       margin: 0 auto;
-      background-color: #ffffff;
+      background: #ffffff;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 4px 32px rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.04);
     }
+
+    /* Header */
     .header {
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white;
-      padding: 48px 32px;
+      background: #0f172a;
+      padding: 40px 40px 36px;
       text-align: center;
+      position: relative;
     }
-    .header h1 {
-      margin: 0;
-      font-size: 32px;
+    .header-glow {
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .brand-row {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      position: relative;
+    }
+    .brand-dot {
+      width: 10px;
+      height: 10px;
+      background: #3b82f6;
+      border-radius: 50%;
+    }
+    .brand-name {
+      font-size: 15px;
       font-weight: 700;
+      color: rgba(255,255,255,0.9);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
     }
+    .powered-by {
+      font-size: 10px;
+      color: rgba(124,58,237,0.7);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+      position: relative;
+    }
+    .header-badge {
+      display: inline-block;
+      background: rgba(59,130,246,0.12);
+      border: 1px solid rgba(59,130,246,0.25);
+      color: #93c5fd;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 100px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .header-title {
+      font-size: 28px;
+      font-weight: 800;
+      color: #ffffff;
+      margin: 0 0 8px;
+      line-height: 1.2;
+      letter-spacing: -0.02em;
+      position: relative;
+    }
+    .header-title .blue { color: #3b82f6; }
+    .header-sub {
+      font-size: 15px;
+      color: rgba(255,255,255,0.45);
+      margin: 0;
+      position: relative;
+    }
+
+    /* Position badge */
+    .position-strip {
+      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
+      border-bottom: 1px solid #e2e8f0;
+      padding: 16px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .position-label {
+      font-size: 12px;
+      color: #64748b;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .position-number {
+      font-size: 18px;
+      font-weight: 800;
+      color: #3b82f6;
+      letter-spacing: -0.02em;
+    }
+    .position-live {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: #10b981;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+    .live-dot {
+      width: 7px;
+      height: 7px;
+      background: #10b981;
+      border-radius: 50%;
+    }
+
+    /* Content */
     .content {
-      padding: 40px 32px;
+      padding: 36px 40px;
     }
     .content p {
-      margin: 0 0 16px 0;
       font-size: 16px;
-      color: #374151;
+      line-height: 1.7;
+      color: #334155;
+      margin: 0 0 18px;
     }
     .content strong {
-      color: #111827;
-      font-weight: 600;
+      color: #0f172a;
+      font-weight: 700;
     }
-    .content ul {
-      margin: 16px 0;
-      padding-left: 24px;
+
+    /* Section label */
+    .section-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #94a3b8;
+      margin: 28px 0 14px;
     }
-    .content li {
-      margin-bottom: 8px;
-      color: #374151;
+
+    /* What's coming list */
+    .coming-list {
+      margin: 0;
+      padding: 0;
+      list-style: none;
     }
-    .cta {
-      display: inline-block;
-      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-      color: white !important;
-      padding: 16px 32px;
-      text-decoration: none;
-      border-radius: 8px;
-      font-weight: 600;
+    .coming-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f1f5f9;
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.5;
+    }
+    .coming-list li:last-child { border-bottom: none; }
+    .check {
+      width: 20px;
+      height: 20px;
+      background: #eff6ff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: #3b82f6;
+      font-size: 11px;
+      font-weight: 800;
+    }
+
+    /* Personal touch box */
+    .personal-box {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #3b82f6;
+      border-radius: 0 12px 12px 0;
+      padding: 18px 20px;
       margin: 24px 0;
     }
-    .footer {
-      padding: 32px;
+    .personal-box p {
+      margin: 0;
+      font-size: 15px;
+      color: #334155;
+      line-height: 1.6;
+    }
+    .personal-box .label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #3b82f6;
+      margin-bottom: 8px;
+    }
+
+    /* CTA Button */
+    .cta-wrap {
       text-align: center;
-      border-top: 1px solid #e5e7eb;
-      background-color: #f9fafb;
+      margin: 32px 0 8px;
+    }
+    .cta-btn {
+      display: inline-block;
+      background: #3b82f6;
+      color: #ffffff !important;
+      font-size: 15px;
+      font-weight: 700;
+      padding: 15px 36px;
+      border-radius: 10px;
+      letter-spacing: -0.01em;
+      box-shadow: 0 4px 16px rgba(59,130,246,0.30);
+    }
+    .cta-sub {
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: center;
+      margin: 10px 0 0;
+    }
+
+    /* Signature */
+    .signature {
+      border-top: 1px solid #f1f5f9;
+      padding-top: 24px;
+      margin-top: 28px;
+    }
+    .sig-name {
+      font-weight: 700;
+      color: #0f172a;
+      font-size: 15px;
+    }
+    .sig-title {
+      font-size: 13px;
+      color: #64748b;
+      margin-top: 2px;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+      padding: 24px 40px;
+      text-align: center;
     }
     .footer p {
       margin: 4px 0;
-      font-size: 14px;
-      color: #6b7280;
+      font-size: 12px;
+      color: #94a3b8;
+      line-height: 1.6;
     }
-    .highlight {
-      background-color: #fef3c7;
-      padding: 2px 6px;
-      border-radius: 4px;
+    .footer a {
+      color: #3b82f6;
       font-weight: 600;
+    }
+    .footer .powered {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 14px;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(124,58,237,0.6);
+    }
+    .violet-dot {
+      width: 6px;
+      height: 6px;
+      background: #7c3aed;
+      border-radius: 50%;
+      opacity: 0.6;
+    }
+
+    /* Mobile */
+    @media (max-width: 480px) {
+      .header { padding: 32px 24px 28px; }
+      .position-strip { padding: 14px 24px; }
+      .content { padding: 28px 24px; }
+      .footer { padding: 20px 24px; }
+      .header-title { font-size: 24px; }
+      .position-strip {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>🎉 You're on the list!</h1>
-    </div>
-    
-    <div class="content">
-      <p>Hey there,</p>
-      
-      <p>Thanks for joining the FounderSales waitlist. You're among the first founders who'll stop freezing and start executing.</p>
-      
-      <p><strong>What happens next:</strong></p>
-      <ul>
-        <li>We're finishing the final features (Practice Mode is 🔥)</li>
-        <li>Early users get <span class="highlight">lifetime 50% off</span></li>
-        <li>You'll get first access when we launch on <strong>April 1st, 2025</strong></li>
-      </ul>
-      
-      <p><strong>Want to see it in action right now?</strong></p>
-      <p>Reply to this email with a one-sentence description of your business, and I'll personally show you 3 opportunities you could act on TODAY.</p>
-      
-      <p style="text-align: center;">
-        <a href="https://discord.gg/foundersales" class="cta">Join our Discord →</a>
-      </p>
-      
-      <p>Talk soon,<br>
-      <strong>[Your Name]</strong><br>
-      Founder, FounderSales</p>
-    </div>
-    
-    <div class="footer">
-      <p><strong>Your spot: #{{position}} on the waitlist</strong></p>
-      <p>Signed up: {{date}}</p>
-      <p style="margin-top: 16px;">
-        <a href="https://foundersales.com" style="color: #667eea; text-decoration: none;">foundersales.com</a>
-      </p>
+  <div class="email-wrapper">
+    <div class="card">
+
+      <!-- Header -->
+      <div class="header">
+        <div class="header-glow"></div>
+        <!-- Brand -->
+        <div class="brand-row">
+          <div class="brand-dot"></div>
+          <div class="brand-name">FounderSales</div>
+        </div>
+        <div class="powered-by">Powered by Clutch AI</div>
+        <!-- Badge -->
+        <div class="header-badge">&#10003;&nbsp; You're on the list</div>
+        <!-- Headline -->
+        <h1 class="header-title">
+          Welcome to the<br>
+          <span class="blue">founding generation.</span>
+        </h1>
+        <p class="header-sub">Clutch is getting ready. So should you.</p>
+      </div>
+
+      <!-- Position strip -->
+      <div class="position-strip">
+        <div class="position-label">Your waitlist position</div>
+        <div class="position-number">#{{position}}</div>
+        <div class="position-live">
+          <div class="live-dot"></div>
+          Live count
+        </div>
+      </div>
+
+      <!-- Body -->
+      <div class="content">
+
+        <p>Hey,</p>
+
+        <p>
+          You just joined the waitlist for <strong>FounderSales</strong> — an autonomous execution
+          partner that researches opportunities, prepares actions, and executes on your behalf.
+          Even when you're offline.
+        </p>
+
+        <p>
+          You're not just early. You're in the first group of founders who'll have access when
+          we launch this <strong>Spring 2026</strong>.
+        </p>
+
+        <div class="section-label">What's coming your way</div>
+        <ul class="coming-list">
+          <li>
+            <div class="check">&#10003;</div>
+            <div>
+              <strong>Clutch AI</strong> — your autonomous agent that hunts for opportunities,
+              prepares outreach, and queues actions while you focus on building.
+            </div>
+          </li>
+          <li>
+            <div class="check">&#10003;</div>
+            <div>
+              <strong>Intelligence Modes</strong> — Deep Research, Advanced Thinking, and Coding
+              Mode so Clutch always uses the right approach for the task.
+            </div>
+          </li>
+          <li>
+            <div class="check">&#10003;</div>
+            <div>
+              <strong>Practice Mode</strong> — role-play realistic rejections and ghosting scenarios
+              so you're psychologically ready before the real stakes hit.
+            </div>
+          </li>
+          <li>
+            <div class="check">&#10003;</div>
+            <div>
+              <strong>Founding member access</strong> — you're joining before the first 500 spots
+              are filled. That matters when we launch.
+            </div>
+          </li>
+        </ul>
+
+        <!-- Personal touch -->
+        <div class="personal-box">
+          <div class="label">A personal note</div>
+          <p>
+            Reply to this email with one sentence about your business, and I'll personally
+            show you 3 opportunities you could be acting on right now.
+            I'm reading every reply.
+          </p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-wrap">
+          <a href="https://foundersales.vercel.app/" class="cta-btn">
+            Visit FounderSales &rarr;
+          </a>
+        </div>
+        <p class="cta-sub">Free to join &nbsp;&middot;&nbsp; Free to start &nbsp;&middot;&nbsp; Spring 2026</p>
+
+        <!-- Signature -->
+        <div class="signature">
+          <p style="margin:0 0 10px; font-size:15px; color:#334155; line-height:1.6;">
+            Talk soon,
+          </p>
+          <div class="sig-name">Dev Paul</div>
+          <div class="sig-title">Founder, FounderSales &mdash; a solo founder who got tired of being frozen.</div>
+        </div>
+
+      </div>
+
+      <!-- Footer -->
+      <div class="footer">
+        <p>You signed up on {{date}}</p>
+        <p>
+          <a href="https://foundersales.vercel.app/">foundersales.vercel.app</a>
+          &nbsp;&nbsp;|&nbsp;&nbsp;
+          <a href="mailto:hellofoundersales@gmail.com">hellofoundersales@gmail.com</a>
+        </p>
+        <p style="margin-top:10px; font-size:11px; color:#cbd5e1;">
+          You're receiving this because you signed up at foundersales.vercel.app.<br>
+          Questions? Just reply to this email.
+        </p>
+        <div class="powered">
+          <div class="violet-dot"></div>
+          Powered by Clutch AI
+        </div>
+      </div>
+
     </div>
   </div>
 </body>
