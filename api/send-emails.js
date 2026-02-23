@@ -1,5 +1,5 @@
-const supabase = require('../config/database');
-const emailService = require('../services/emailService');
+const supabase = require('./backend/src/config/database');
+const emailService = require('./backend/src/services/emailService');
 
 module.exports = async (req, res) => {
   try {
