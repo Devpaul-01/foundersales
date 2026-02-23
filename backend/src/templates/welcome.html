@@ -3,450 +3,291 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>You're on the FounderSales waitlist</title>
+  <title>You're in — FounderSales</title>
   <style>
-    /* Reset */
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap');
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      padding: 0;
-      background-color: #f1f5f9;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-      color: #0f172a;
-    }
-    img { border: 0; display: block; }
-    a { text-decoration: none; }
+    body { margin: 0; padding: 0; background-color: #f0f2f5; font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif; -webkit-font-smoothing: antialiased; }
+    .wrapper { max-width: 620px; margin: 32px auto; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 40px rgba(0,0,0,0.10); }
 
-    /* Wrapper */
-    .email-wrapper {
-      width: 100%;
-      padding: 32px 16px 48px;
-    }
+    /* HERO */
+    .hero { background: #0a0f1e; padding: 48px 40px 40px; text-align: center; position: relative; }
+    .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.18) 0%, transparent 70%); pointer-events: none; }
+    .brand { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 28px; }
+    .brand-icon { width: 36px; height: 36px; background: #3b82f6; border-radius: 10px; display: inline-flex; align-items: center; justify-content: center; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: #fff; }
+    .brand-name { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; color: #fff; letter-spacing: -0.3px; text-align: left; }
+    .brand-sub { display: block; font-size: 10px; font-weight: 400; color: #3b82f6; letter-spacing: 0.05em; text-transform: uppercase; }
+    .badge { display: inline-block; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.35); color: #60a5fa; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; padding: 5px 14px; border-radius: 999px; margin-bottom: 20px; }
+    .hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 34px; font-weight: 700; color: #fff; margin: 0 0 12px; line-height: 1.15; letter-spacing: -0.5px; }
+    .hero h1 span { color: #3b82f6; }
+    .hero-sub { color: #94a3b8; font-size: 15px; line-height: 1.6; max-width: 440px; margin: 0 auto; }
+    .spot-badge { display: inline-flex; align-items: center; gap: 8px; margin-top: 28px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 999px; padding: 8px 20px; color: #e2e8f0; font-size: 13px; font-weight: 500; }
+    .live-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; flex-shrink: 0; }
 
-    /* Card */
-    .card {
-      max-width: 580px;
-      margin: 0 auto;
-      background: #ffffff;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 4px 32px rgba(15, 23, 42, 0.08), 0 1px 4px rgba(15, 23, 42, 0.04);
-    }
+    /* BODY */
+    .body { background: #ffffff; padding: 40px 40px 32px; }
+    .greeting { font-size: 16px; color: #374151; margin: 0 0 20px; line-height: 1.7; }
+    .greeting strong { color: #111827; }
 
-    /* Header */
-    .header {
-      background: #0f172a;
-      padding: 40px 40px 36px;
-      text-align: center;
-      position: relative;
-    }
-    .header-glow {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(59,130,246,0.12) 0%, transparent 70%);
-      pointer-events: none;
-    }
-    .brand-row {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 24px;
-      position: relative;
-    }
-    .brand-dot {
-      width: 10px;
-      height: 10px;
-      background: #3b82f6;
-      border-radius: 50%;
-    }
-    .brand-name {
-      font-size: 15px;
-      font-weight: 700;
-      color: rgba(255,255,255,0.9);
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .powered-by {
-      font-size: 10px;
-      color: rgba(124,58,237,0.7);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 28px;
-      position: relative;
-    }
-    .header-badge {
-      display: inline-block;
-      background: rgba(59,130,246,0.12);
-      border: 1px solid rgba(59,130,246,0.25);
-      color: #93c5fd;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      padding: 6px 16px;
-      border-radius: 100px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-    .header-title {
-      font-size: 28px;
-      font-weight: 800;
-      color: #ffffff;
-      margin: 0 0 8px;
-      line-height: 1.2;
-      letter-spacing: -0.02em;
-      position: relative;
-    }
-    .header-title .blue { color: #3b82f6; }
-    .header-sub {
-      font-size: 15px;
-      color: rgba(255,255,255,0.45);
-      margin: 0;
-      position: relative;
-    }
+    /* QUEUE HERO BLOCK */
+    .feature-hero { background: linear-gradient(135deg, #0a0f1e 0%, #0f172a 100%); border-radius: 16px; padding: 28px 28px 24px; margin: 28px 0; border: 1px solid rgba(59,130,246,0.2); position: relative; overflow: hidden; }
+    .feature-hero::before { content: ''; position: absolute; top: -40px; right: -40px; width: 180px; height: 180px; background: radial-gradient(circle, rgba(59,130,246,0.15) 0%, transparent 70%); pointer-events: none; }
+    .feature-tag { display: inline-flex; align-items: center; gap: 6px; background: rgba(59,130,246,0.15); border: 1px solid rgba(59,130,246,0.3); border-radius: 999px; padding: 4px 12px; font-size: 10px; font-weight: 700; color: #60a5fa; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 14px; }
+    .feature-hero h2 { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #fff; margin: 0 0 10px; line-height: 1.25; }
+    .feature-hero h2 span { color: #3b82f6; }
+    .feature-hero p { color: #94a3b8; font-size: 14px; line-height: 1.65; margin: 0 0 20px; }
+    .queue-visual { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: 14px 16px; }
+    .queue-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+    .queue-label { font-size: 10px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; }
+    .queue-status { display: inline-flex; align-items: center; gap: 5px; font-size: 10px; color: #22c55e; font-weight: 600; }
+    .queue-item { display: flex; align-items: flex-start; gap: 10px; padding: 9px 0; border-bottom: 1px solid rgba(255,255,255,0.05); }
+    .queue-item:last-child { border-bottom: none; }
+    .queue-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; margin-top: 3px; }
+    .q-blue { background: #3b82f6; } .q-violet { background: #8b5cf6; } .q-green { background: #22c55e; } .q-orange { background: #f59e0b; }
+    .queue-text { font-size: 12px; color: #cbd5e1; line-height: 1.4; flex: 1; }
+    .queue-text strong { color: #fff; font-weight: 500; }
+    .queue-time { font-size: 10px; color: #475569; flex-shrink: 0; white-space: nowrap; }
+    .queue-cta { display: flex; align-items: center; gap: 8px; margin-top: 16px; font-size: 12px; color: #60a5fa; font-weight: 600; }
 
-    /* Position badge */
-    .position-strip {
-      background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
-      border-bottom: 1px solid #e2e8f0;
-      padding: 16px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .position-label {
-      font-size: 12px;
-      color: #64748b;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .position-number {
-      font-size: 18px;
-      font-weight: 800;
-      color: #3b82f6;
-      letter-spacing: -0.02em;
-    }
-    .position-live {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 11px;
-      color: #10b981;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-    .live-dot {
-      width: 7px;
-      height: 7px;
-      background: #10b981;
-      border-radius: 50%;
-    }
+    /* SECTION LABEL */
+    .section-label { font-size: 11px; font-weight: 700; color: #9ca3af; letter-spacing: 0.1em; text-transform: uppercase; margin: 36px 0 16px; }
 
-    /* Content */
-    .content {
-      padding: 36px 40px;
-    }
-    .content p {
-      font-size: 16px;
-      line-height: 1.7;
-      color: #334155;
-      margin: 0 0 18px;
-    }
-    .content strong {
-      color: #0f172a;
-      font-weight: 700;
-    }
+    /* FEATURE CARDS */
+    .feature-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 0 0 12px; }
+    .feature-card { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 14px; padding: 18px 16px; }
+    .feature-card.full { grid-column: 1 / -1; }
+    .fc-icon { font-size: 20px; margin-bottom: 10px; display: block; }
+    .fc-tag { display: inline-block; font-size: 9px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; padding: 3px 8px; border-radius: 999px; margin-bottom: 8px; }
+    .tag-blue { background: #dbeafe; color: #1d4ed8; } .tag-violet { background: #ede9fe; color: #6d28d9; } .tag-amber { background: #fef3c7; color: #b45309; } .tag-green { background: #d1fae5; color: #065f46; } .tag-indigo { background: #e0e7ff; color: #3730a3; }
+    .feature-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 15px; font-weight: 600; color: #111827; margin: 0 0 6px; line-height: 1.3; }
+    .feature-card p { font-size: 13px; color: #6b7280; line-height: 1.55; margin: 0; }
 
-    /* Section label */
-    .section-label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #94a3b8;
-      margin: 28px 0 14px;
-    }
+    /* WALLS */
+    .walls-block { background: #0a0f1e; border-radius: 16px; padding: 28px; margin: 28px 0; }
+    .walls-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 18px; font-weight: 700; color: #fff; margin: 0 0 6px; }
+    .walls-block .sub { color: #64748b; font-size: 13px; margin: 0 0 20px; line-height: 1.5; }
+    .wall-item { display: flex; gap: 14px; margin-bottom: 16px; }
+    .wall-num { width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); font-size: 11px; font-weight: 700; color: #64748b; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; }
+    .wall-content h5 { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 600; color: #e2e8f0; margin: 0 0 4px; }
+    .wall-content p { font-size: 13px; color: #64748b; margin: 0; line-height: 1.5; }
+    .walls-resolve { margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,0.06); font-size: 13px; color: #94a3b8; text-align: center; }
+    .walls-resolve a { color: #3b82f6; text-decoration: none; font-weight: 600; }
 
-    /* What's coming list */
-    .coming-list {
-      margin: 0;
-      padding: 0;
-      list-style: none;
-    }
-    .coming-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      padding: 12px 0;
-      border-bottom: 1px solid #f1f5f9;
-      font-size: 15px;
-      color: #334155;
-      line-height: 1.5;
-    }
-    .coming-list li:last-child { border-bottom: none; }
-    .check {
-      width: 20px;
-      height: 20px;
-      background: #eff6ff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: #3b82f6;
-      font-size: 11px;
-      font-weight: 800;
-    }
+    /* CTA */
+    .cta-block { background: linear-gradient(135deg, #1e3a5f, #1a1f35); border-radius: 16px; padding: 32px 28px; text-align: center; margin: 28px 0; border: 1px solid rgba(59,130,246,0.2); }
+    .cta-block h3 { font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700; color: #fff; margin: 0 0 8px; }
+    .cta-block p { color: #94a3b8; font-size: 14px; margin: 0 0 24px; line-height: 1.6; }
+    .cta-btn { display: inline-block; background: #3b82f6; color: #fff !important; text-decoration: none; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 15px; padding: 14px 36px; border-radius: 10px; letter-spacing: -0.2px; }
+    .cta-perks { display: flex; justify-content: center; gap: 20px; margin-top: 16px; flex-wrap: wrap; }
+    .cta-perk { font-size: 12px; color: #64748b; }
+    .cta-perk::before { content: '✓ '; color: #22c55e; font-weight: 700; }
 
-    /* Personal touch box */
-    .personal-box {
-      background: #f8fafc;
-      border: 1px solid #e2e8f0;
-      border-left: 3px solid #3b82f6;
-      border-radius: 0 12px 12px 0;
-      padding: 18px 20px;
-      margin: 24px 0;
-    }
-    .personal-box p {
-      margin: 0;
-      font-size: 15px;
-      color: #334155;
-      line-height: 1.6;
-    }
-    .personal-box .label {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #3b82f6;
-      margin-bottom: 8px;
-    }
+    /* REPLY PROMPT */
+    .reply-prompt { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; border-radius: 12px; padding: 18px 20px; margin: 24px 0; font-size: 14px; color: #78350f; line-height: 1.6; }
+    .reply-prompt strong { color: #92400e; }
 
-    /* CTA Button */
-    .cta-wrap {
-      text-align: center;
-      margin: 32px 0 8px;
-    }
-    .cta-btn {
-      display: inline-block;
-      background: #3b82f6;
-      color: #ffffff !important;
-      font-size: 15px;
-      font-weight: 700;
-      padding: 15px 36px;
-      border-radius: 10px;
-      letter-spacing: -0.01em;
-      box-shadow: 0 4px 16px rgba(59,130,246,0.30);
-    }
-    .cta-sub {
-      font-size: 12px;
-      color: #94a3b8;
-      text-align: center;
-      margin: 10px 0 0;
-    }
+    /* FOOTER */
+    .footer { background: #f8fafc; padding: 28px 40px; border-top: 1px solid #e5e7eb; text-align: center; }
+    .footer-spot { display: inline-block; background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px 24px; margin-bottom: 20px; }
+    .footer-spot .num { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; color: #111827; display: block; }
+    .footer-spot .label { font-size: 11px; color: #9ca3af; display: block; text-transform: uppercase; letter-spacing: 0.06em; }
+    .footer p { margin: 4px 0; font-size: 12px; color: #9ca3af; }
+    .footer a { color: #3b82f6; text-decoration: none; }
 
-    /* Signature */
-    .signature {
-      border-top: 1px solid #f1f5f9;
-      padding-top: 24px;
-      margin-top: 28px;
-    }
-    .sig-name {
-      font-weight: 700;
-      color: #0f172a;
-      font-size: 15px;
-    }
-    .sig-title {
-      font-size: 13px;
-      color: #64748b;
-      margin-top: 2px;
-    }
-
-    /* Footer */
-    .footer {
-      background: #f8fafc;
-      border-top: 1px solid #e2e8f0;
-      padding: 24px 40px;
-      text-align: center;
-    }
-    .footer p {
-      margin: 4px 0;
-      font-size: 12px;
-      color: #94a3b8;
-      line-height: 1.6;
-    }
-    .footer a {
-      color: #3b82f6;
-      font-weight: 600;
-    }
-    .footer .powered {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      margin-top: 14px;
-      font-size: 10px;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(124,58,237,0.6);
-    }
-    .violet-dot {
-      width: 6px;
-      height: 6px;
-      background: #7c3aed;
-      border-radius: 50%;
-      opacity: 0.6;
-    }
-
-    /* Mobile */
     @media (max-width: 480px) {
-      .header { padding: 32px 24px 28px; }
-      .position-strip { padding: 14px 24px; }
-      .content { padding: 28px 24px; }
-      .footer { padding: 20px 24px; }
-      .header-title { font-size: 24px; }
-      .position-strip {
-        flex-direction: column;
-        gap: 8px;
-        text-align: center;
-      }
+      .wrapper { margin: 0; border-radius: 0; }
+      .hero { padding: 36px 24px 32px; }
+      .hero h1 { font-size: 26px; }
+      .body { padding: 28px 24px 24px; }
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-card.full { grid-column: auto; }
+      .footer { padding: 24px; }
+      .cta-perks { flex-direction: column; align-items: center; gap: 8px; }
     }
   </style>
 </head>
 <body>
-  <div class="email-wrapper">
-    <div class="card">
+<div class="wrapper">
 
-      <!-- Header -->
-      <div class="header">
-        <div class="header-glow"></div>
-        <!-- Brand -->
-        <div class="brand-row">
-          <div class="brand-dot"></div>
-          <div class="brand-name">FounderSales</div>
-        </div>
-        <div class="powered-by">Powered by Clutch AI</div>
-        <!-- Badge -->
-        <div class="header-badge">&#10003;&nbsp; You're on the list</div>
-        <!-- Headline -->
-        <h1 class="header-title">
-          Welcome to the<br>
-          <span class="blue">founding generation.</span>
-        </h1>
-        <p class="header-sub">Clutch is getting ready. So should you.</p>
-      </div>
-
-      <!-- Position strip -->
-      <div class="position-strip">
-        <div class="position-label">Your waitlist position</div>
-        <div class="position-number">#{{position}}</div>
-        <div class="position-live">
-          <div class="live-dot"></div>
-          Live count
-        </div>
-      </div>
-
-      <!-- Body -->
-      <div class="content">
-
-        <p>Hey,</p>
-
-        <p>
-          You just joined the waitlist for <strong>FounderSales</strong> — an autonomous execution
-          partner that researches opportunities, prepares actions, and executes on your behalf.
-          Even when you're offline.
-        </p>
-
-        <p>
-          You're not just early. You're in the first group of founders who'll have access when
-          we launch this <strong>Spring 2026</strong>.
-        </p>
-
-        <div class="section-label">What's coming your way</div>
-        <ul class="coming-list">
-          <li>
-            <div class="check">&#10003;</div>
-            <div>
-              <strong>Clutch AI</strong> — your autonomous agent that hunts for opportunities,
-              prepares outreach, and queues actions while you focus on building.
-            </div>
-          </li>
-          <li>
-            <div class="check">&#10003;</div>
-            <div>
-              <strong>Intelligence Modes</strong> — Deep Research, Advanced Thinking, and Coding
-              Mode so Clutch always uses the right approach for the task.
-            </div>
-          </li>
-          <li>
-            <div class="check">&#10003;</div>
-            <div>
-              <strong>Practice Mode</strong> — role-play realistic rejections and ghosting scenarios
-              so you're psychologically ready before the real stakes hit.
-            </div>
-          </li>
-          <li>
-            <div class="check">&#10003;</div>
-            <div>
-              <strong>Founding member access</strong> — you're joining before the first 500 spots
-              are filled. That matters when we launch.
-            </div>
-          </li>
-        </ul>
-
-        <!-- Personal touch -->
-        <div class="personal-box">
-          <div class="label">A personal note</div>
-          <p>
-            Reply to this email with one sentence about your business, and I'll personally
-            show you 3 opportunities you could be acting on right now.
-            I'm reading every reply.
-          </p>
-        </div>
-
-        <!-- CTA -->
-        <div class="cta-wrap">
-          <a href="https://foundersales.vercel.app/" class="cta-btn">
-            Visit FounderSales &rarr;
-          </a>
-        </div>
-        <p class="cta-sub">Free to join &nbsp;&middot;&nbsp; Free to start &nbsp;&middot;&nbsp; Spring 2026</p>
-
-        <!-- Signature -->
-        <div class="signature">
-          <p style="margin:0 0 10px; font-size:15px; color:#334155; line-height:1.6;">
-            Talk soon,
-          </p>
-          <div class="sig-name">Dev Paul</div>
-          <div class="sig-title">Founder, FounderSales &mdash; a solo founder who got tired of being frozen.</div>
-        </div>
-
-      </div>
-
-      <!-- Footer -->
-      <div class="footer">
-        <p>You signed up on {{date}}</p>
-        <p>
-          <a href="https://foundersales.vercel.app/">foundersales.vercel.app</a>
-          &nbsp;&nbsp;|&nbsp;&nbsp;
-          <a href="mailto:hellofoundersales@gmail.com">hellofoundersales@gmail.com</a>
-        </p>
-        <p style="margin-top:10px; font-size:11px; color:#cbd5e1;">
-          You're receiving this because you signed up at foundersales.vercel.app.<br>
-          Questions? Just reply to this email.
-        </p>
-        <div class="powered">
-          <div class="violet-dot"></div>
-          Powered by Clutch AI
-        </div>
-      </div>
-
+  <!-- HERO -->
+  <div class="hero">
+    <div class="brand">
+      <span class="brand-icon">F</span>
+      <span class="brand-name">FounderSales<span class="brand-sub">Powered by Clutch AI</span></span>
+    </div>
+    <div class="badge">🟢 You're officially on the waitlist</div>
+    <h1>Clutch is already working.<br><span>You just need to show up.</span></h1>
+    <p class="hero-sub">While you read this, Clutch is autonomously researching opportunities, queuing actions, and preparing outreach — for founders/business owners like you.</p>
+    <div class="spot-badge">
+      <span class="live-dot"></span>
+      Your spot: <strong style="color:#fff;">&nbsp;#{{position}}</strong>&nbsp;· Launching Spring 2026
     </div>
   </div>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <p class="greeting">
+      Hey there,<br><br>
+      You just joined <strong>22+ founders</strong> who got tired of spending 3 hours a day figuring out who to reach and what to say.<br><br>
+      Clutch fixes that — automatically, while you're offline. Here's exactly what you're getting access to.
+    </p>
+
+    <!-- QUEUE FEATURE HERO BLOCK -->
+    <div class="feature-hero">
+      <div class="feature-tag">
+        <span class="live-dot"></span>
+        Flagship Feature
+      </div>
+      <h2>Queue tasks. Go offline.<br><span>Wake up to results.</span></h2>
+      <p>Here's what separates Clutch from every other "AI sales tool": you don't have to be there. Queue your outreach tasks — find leads, draft replies, prep for tomorrow's launch — then close your laptop. Clutch executes in the background and pings you the moment each task is done.</p>
+
+      <div class="queue-visual">
+        <div class="queue-header">
+          <span class="queue-label">Your task queue — right now</span>
+          <span class="queue-status"><span class="live-dot"></span> 4 tasks running</span>
+        </div>
+        <div class="queue-item">
+          <span class="queue-dot q-blue"></span>
+          <span class="queue-text"><strong>Lead scan:</strong> Finding high-intent founders in r/startups and r/SaaS</span>
+          <span class="queue-time">Running…</span>
+        </div>
+        <div class="queue-item">
+          <span class="queue-dot q-violet"></span>
+          <span class="queue-text"><strong>Draft ready:</strong> Personalized reply to 3 Product Hunt discussions</span>
+          <span class="queue-time">Done ✓</span>
+        </div>
+        <div class="queue-item">
+          <span class="queue-dot q-green"></span>
+          <span class="queue-text"><strong>Research:</strong> Intent analysis on 5 new LinkedIn engagement signals</span>
+          <span class="queue-time">25m ago</span>
+        </div>
+        <div class="queue-item">
+          <span class="queue-dot q-orange"></span>
+          <span class="queue-text"><strong>Event prep:</strong> Tomorrow's launch — talking points queued and ready</span>
+          <span class="queue-time">Queued</span>
+        </div>
+        <div class="queue-cta">→ You get notified the moment each task completes. Zero babysitting required.</div>
+      </div>
+    </div>
+
+    <!-- ALL FEATURES -->
+    <div class="section-label">Every capability you unlock</div>
+
+    <div class="feature-grid">
+      <div class="feature-card">
+        <span class="fc-icon">📡</span>
+        <span class="fc-tag tag-violet">Agentic</span>
+        <h4>The Hunter That Never Sleeps</h4>
+        <p>Clutch autonomously scans Reddit, Twitter, LinkedIn, and Product Hunt. It performs deep research on post history and intent signals — surfacing high-value leads before you even open your laptop.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">⚡</span>
+        <span class="fc-tag tag-blue">Instant</span>
+        <h4>Opportunity to Sent in Seconds</h4>
+        <p>No blank pages. No decision fatigue. Clutch hands you the target, the research, and a ready-to-send message. One click launches via Gmail, Reddit, LinkedIn, or WhatsApp.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">🛡️</span>
+        <span class="fc-tag tag-amber">Resilience</span>
+        <h4>Immunity to 'No' — Practice Mode 🔥</h4>
+        <p>Role-play realistic rejection, ghosting, and objections with AI. Build psychological armor before real stakes hit — so silence stops being a reason not to send.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">🧠</span>
+        <span class="fc-tag tag-indigo">Learns From You</span>
+        <h4>Your Autonomous Growth Partner</h4>
+        <p>Clutch interviews you during onboarding — absorbing your voice, goals, and context. Every draft sounds like you. Every send teaches it more. It gets smarter with every action.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">💬</span>
+        <span class="fc-tag tag-blue">Personalized</span>
+        <h4>Deep Onboarding</h4>
+        <p>One intelligent conversation gives Clutch infinite context about your business. It asks the right follow-up questions so nothing it prepares feels generic.</p>
+      </div>
+      <div class="feature-card">
+        <span class="fc-icon">📅</span>
+        <span class="fc-tag tag-green">Strategic</span>
+        <h4>Event Intelligence</h4>
+        <p>Add launches, interviews, or conferences to Clutch's calendar. It autonomously preps talking points and outreach strategies before you open your laptop — every moment of leverage, already prepared.</p>
+      </div>
+    </div>
+
+    <!-- THREE WALLS -->
+    <div class="walls-block">
+      <h3>The three walls Clutch tears down.</h3>
+      <p class="sub">Bad ideas don't kill startups. These invisible walls block execution at every step.</p>
+      <div class="wall-item">
+        <div class="wall-num">01</div>
+        <div class="wall-content">
+          <h5>Presentation Wall — "You can't explain it clearly enough to close."</h5>
+          <p>You know your product is valuable. But the words fall flat with strangers. Clutch drafts it for you, in your voice, for that exact person.</p>
+        </div>
+      </div>
+      <div class="wall-item">
+        <div class="wall-num">02</div>
+        <div class="wall-content">
+          <h5>Execution Wall — "Fear of rejection keeps you from hitting send."</h5>
+          <p>Every cold message feels like a gamble. So you polish it one more time instead. Practice Mode removes the fear before real stakes hit.</p>
+        </div>
+      </div>
+      <div class="wall-item" style="margin-bottom:0;">
+        <div class="wall-num">03</div>
+        <div class="wall-content">
+          <h5>Direction Wall — "You're moving fast — but in the wrong direction."</h5>
+          <p>Without the right signals you reach the wrong people at the wrong time. Clutch's hunter finds where your next customer actually is, right now.</p>
+        </div>
+      </div>
+      <div class="walls-resolve">FounderSales was built to collapse all three — <a href="https://foundersales.vercel.app">simultaneously →</a></div>
+    </div>
+
+    <!-- REPLY PROMPT -->
+    <div class="reply-prompt">
+      <strong>Want a personal demo before launch?</strong><br>
+      Reply to this email with one sentence describing your business. I'll personally surface 3 real opportunities you could act on today — using exactly what Clutch will queue automatically for you.
+    </div>
+
+    <!-- CTA -->
+    <div class="cta-block">
+      <h3>Your next customer posted something today.</h3>
+      <p>You just don't know where yet. Clutch finds them, queues the task, and hands you a one-click launch. Stop missing what's already out there.</p>
+      <a href="https://foundersales.vercel.app" class="cta-btn">Visit FounderSales →</a>
+      <div class="cta-perks">
+        <span class="cta-perk">Free during early access</span>
+        <span class="cta-perk">First 500 spots only</span>
+        <span class="cta-perk">Founder pricing — forever</span>
+      </div>
+    </div>
+
+    <p style="font-size:15px;color:#374151;margin:24px 0 0;line-height:1.7;">
+      Talk soon,<br>
+      <strong style="color:#111827;">[Your Name]</strong><br>
+      <span style="color:#9ca3af;font-size:13px;">Founder, FounderSales · Powered by Clutch AI</span>
+    </p>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-spot">
+      <span class="num">#{{position}}</span>
+      <span class="label">Your waitlist spot</span>
+    </div>
+    <p>Signed up: {{date}}</p>
+    <p style="margin-top:12px;">
+      <a href="https://foundersales.vercel.app">foundersales.vercel.app</a>
+      &nbsp;·&nbsp;
+      <a href="https://discord.gg/foundersales">Join Discord</a>
+      &nbsp;·&nbsp;
+      <a href="{{unsubscribe_url}}">Unsubscribe</a>
+    </p>
+    <p style="margin-top:8px;font-size:11px;color:#d1d5db;">
+      You received this because you joined the FounderSales waitlist.<br>
+      Launching Spring 2026 · First 500 spots free · Founder pricing locked forever.
+    </p>
+  </div>
+
+</div>
 </body>
-</html>
+            </html>
+            
